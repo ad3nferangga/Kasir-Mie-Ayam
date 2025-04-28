@@ -1,7 +1,7 @@
-#Kasir-Mie-Ayam
+# Kasir-Mie-Ayam
 
 
-#Poster
+# Poster
 ![Blue And Yellow Modern Web Development Services Instagram Post](https://github.com/user-attachments/assets/ee07823b-a58a-482f-8be0-9b0d22e2b9e0)
 
 # Deskripsi Aplikasi
