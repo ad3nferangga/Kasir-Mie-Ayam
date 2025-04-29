@@ -227,9 +227,14 @@ $resultMinum = mysqli_query($conn, $queryMinum);
           keranjang = [];
           updateKeranjang();
           document.getElementById('atas-nama').value = '';
+          // redirect to refresh orders page
+          window.location.href = 'Konfirmasi.php';
         }
       })
-      .catch(console.error);
+      .catch(err => {
+        console.error(err);
+        alert('Gagal membuat pesanan. Coba lagi.');
+      });
   });
 
   document.querySelectorAll('.delete-product').forEach(btn => {
