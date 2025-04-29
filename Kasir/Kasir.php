@@ -38,7 +38,6 @@ if (!$resultMie || !$resultBakso || !$resultMinum) {
     <ul class="space-y-4 flex-1">
       <li><a class="flex items-center text-lg p-3 hover:bg-teal-600 rounded-lg" href="Kasir.php">Home</a></li>
       <li><a class="flex items-center text-lg p-3 hover:bg-teal-600 rounded-lg" href="Konfirmasi.php">pesanan</a></li>
-      <li><a class="flex items-center text-lg p-3 hover:bg-teal-600 rounded-lg" href="report.php">Report</a></li>
     </ul>
     <a class="flex items-center text-lg p-3 bg-red-600 hover:bg-red-700 rounded-lg mt-auto" href="../Login.php">Logout</a>
   </div>
@@ -145,58 +144,53 @@ if (!$resultMie || !$resultBakso || !$resultMinum) {
         </div>
       </div>
 
-      <!-- Keranjang -->
+       <!-- Keranjang -->
       <div>
-        <div class="bg-teal-700 text-white p-4 rounded-t-lg">
-          <h2 class="text-lg font-semibold">🛒 Keranjang</h2>
-        </div>
+        <div class="bg-teal-700 text-white p-4 rounded-t-lg"><h2>🛒 Keranjang</h2></div>
         <div class="bg-white p-4 rounded-b-lg shadow-md">
-          <!-- Input Tanggal -->
           <label class="block text-gray-700">Tanggal</label>
-          <input type="date" id="tanggal-pesanan" class="border border-gray-300 rounded px-4 py-2 w-full mb-4" readonly />
-          <!-- Input Nama Pemesan -->
+          <input type="date" id="tanggal-pesanan" readonly class="w-full p-2 border border-gray-300 rounded mb-4 bg-gray-100 cursor-not-allowed">
+          <script>document.getElementById('tanggal-pesanan').value = new Date().toISOString().split('T')[0];</script>
+
           <label class="block text-gray-700">ATAS NAMA</label>
-          <!-- Tambahkan id "atas-nama" di sini -->
-          <input type="text" id="atas-nama" class="border border-gray-300 rounded px-4 py-2 w-full mb-4" placeholder="Atas Nama"/>
-          <h3 class="text-gray-700 font-semibold mb-2">List Keranjang</h3>
-          <table class="min-w-full border text-left border-gray-300 mb-4">
-            <thead class="bg-gray-100">
-              <tr>
-                <th class="border px-4 py-2">No</th>
-                <th class="border px-4 py-2">Nama</th>
-                <th class="border px-4 py-2">Qty</th>
-                <th class="border px-4 py-2">Harga</th>
-                <th class="border px-4 py-2">#</th>
-              </tr>
-            </thead>
-            <tbody id="keranjang-list"></tbody>
-          </table>
-          <label class="block text-gray-700">Metode</label>
-          <select class="border border-gray-300 rounded px-4 py-2 w-full mb-4">
+          <input type="text" id="atas-nama" class="w-full p-2 border border-gray-300 rounded mb-4" placeholder="Atas Nama">
+
+          <label class="block text-gray-700">Metode Pembayaran</label>
+          <select id="metode-pembayaran" class="w-full p-2 border border-gray-300 rounded mb-4">
             <option>- Metode Pembayaran -</option>
             <option>Qris</option>
             <option>Cash</option>
           </select>
+
           <label class="block text-gray-700">Order</label>
-          <select class="border border-gray-300 rounded px-4 py-2 w-full mb-4">
+          <select id="order" class="w-full p-2 border border-gray-300 rounded mb-4">
             <option>Di Tempat</option>
             <option>Bungkus</option>
           </select>
-          <p class="mt-4 font-semibold">Total Bayar: <span id="total-harga">Rp0</span></p>
-          <!-- Tombol Buat Pesanan -->
-          <button id="buat-pesanan" class="mt-4 bg-green-500 text-white px-4 py-2 rounded w-full">Buat Pesanan</button>
+
+          <h3 class="text-gray-700 font-semibold mb-2">List Keranjang</h3>
+          <table class="w-full mb-4 border-collapse">
+            <thead class="bg-gray-100">
+              <tr>
+                <th class="p-2 border">No</th>
+                <th class="p-2 border">Nama</th>
+                <th class="p-2 border">Qty</th>
+                <th class="p-2 border">Harga</th>
+                <th class="p-2 border">#</th>
+              </tr>
+            </thead>
+            <tbody id="keranjang-list"></tbody>
+          </table>
+
+          <p class="font-semibold mb-4">Total Bayar: <span id="total-harga">Rp0</span></p>
+          <button id="buat-pesanan" class="w-full bg-green-500 text-white p-2 rounded">Buat Pesanan</button>
         </div>
       </div>
+
     </div>
   </div>
 
-  <!-- JavaScript -->
   <script>
-  // Dark mode toggle
-  document.getElementById('toggle-mode').addEventListener('change', function () {
-    document.documentElement.classList.toggle('dark-mode', this.checked);
-  });
-
   // Filter kategori
   document.getElementById('filter-kategori').addEventListener('change', function() {
     const kat = this.value;
