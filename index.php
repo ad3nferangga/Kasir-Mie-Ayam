@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- Right Side -->
     <div class="w-1/2 p-10 flex flex-col justify-center">
       <h2 class="text-4xl font-bold text-gray-800 dark:text-white mb-8">Login</h2>
-      <form method="POST" action="login.php" class="space-y-6">
+      <form method="POST" action="index.php" class="space-y-6">
         <div>
           <label class="block text-gray-600 dark:text-gray-300 text-lg mb-2">Username</label>
           <input type="text" name="username" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="Enter your username" required>
