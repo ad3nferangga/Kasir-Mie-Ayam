@@ -18,7 +18,7 @@
       <li><a class="flex items-center text-lg p-3 hover:bg-teal-600 rounded-lg" href="akun.php">Tambah Akun</a></li>
       <li><a class="flex items-center text-lg p-3 hover:bg-teal-600 rounded-lg" href="add_product.php">Add Product</a></li>
     </ul>
-    <a class="flex items-center text-lg p-3 bg-red-600 hover:bg-red-700 rounded-lg mt-auto" href="../Login.php">
+    <a class="flex items-center text-lg p-3 bg-red-600 hover:bg-red-700 rounded-lg mt-auto" href="../index.php">
       Logout
     </a>
   </div>
