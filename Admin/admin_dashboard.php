@@ -15,39 +15,6 @@ $resultMinum = mysqli_query($conn, $queryMinum);
   <meta charset="UTF-8">
   <title>Menu dan Keranjang</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    html { transition: background 0.5s ease, color 0.5s ease; }
-    body {
-      background-color: #FEF3C7;
-      color: #111;
-      transition: background .3s, color .3s;
-    }
-    .dark-mode body {
-      background-color: #1F2937 !important;
-      color: #E5E7EB !important;
-    }
-    .dark-mode .text-gray-700 { color: #E5E7EB !important; }
-    .dark-mode .text-green-600 { color: #9AE6B4 !important; }
-    .dark-mode .bg-white     { background-color: #374151 !important; }
-    .dark-mode .bg-gray-100  { background-color: #4B5563 !important; }
-    .dark-mode .bg-gray-200  { background-color: #4B5563 !important; }
-    .dark-mode .border-gray-300 { border-color: #4B5563 !important; }
-    .dark-mode .border-gray-500 { border-color: #4B5563 !important; }
-    .dark-mode .border-gray-700 { border-color: #FFFFFF !important; }
-    .dark-mode input,
-    .dark-mode select {
-      background-color: #374151 !important;
-      color: #E5E7EB !important;
-    }
-    .dark-mode input::placeholder,
-    .dark-mode select::placeholder {
-      color: #A0AEC0 !important;
-    }
-    .dark-mode input[readonly] {
-      background-color: #4B5563 !important;
-      color: #CBD5E0 !important;
-    }
-  </style>
 </head>
 <body class="bg-orange-100 flex">
 
@@ -63,19 +30,6 @@ $resultMinum = mysqli_query($conn, $queryMinum);
       <li><a href="akun.php"            class="block p-3 rounded hover:bg-teal-600">Tambah Akun</a></li>
       <li><a href="add_product.php"     class="block p-3 rounded hover:bg-teal-600">Add Product</a></li>
     </ul>
-
-    <!-- Mode Switch Toggle Horizontal -->
-    <div class="mt-6 mb-4 flex items-center justify-center">
-      <label for="toggle-mode" class="relative inline-flex items-center cursor-pointer">
-        <input type="checkbox" id="toggle-mode" class="sr-only peer">
-        <div class="w-20 h-10 bg-gray-200 dark:bg-gray-600 rounded-full border border-gray-400 dark:border-gray-600 transition-colors peer-checked:bg-yellow-300"></div>
-        <div class="absolute w-8 h-8 bg-white rounded-full top-1 left-1 transition-transform peer-checked:translate-x-10"></div>
-        <div class="absolute inset-0 flex items-center justify-between px-2 pointer-events-none">
-          <span class="text-yellow-500 text-lg">☀️</span>
-          <span class="text-gray-700 dark:text-gray-300 text-lg">🌙</span>
-        </div>
-      </label>
-    </div>
 
     <a href="../Login.php"
        class="block mt-auto p-3 bg-red-600 rounded hover:bg-red-700 text-center font-semibold shadow-md">
@@ -105,7 +59,7 @@ $resultMinum = mysqli_query($conn, $queryMinum);
           function renderSection($id, $title, $result) { ?>
             <div id="<?= $id ?>-section" class="menu-section <?= $id ?> bg-white border border-gray-700 rounded-lg p-4 mb-6">
               <div class="text-center mb-4">
-                <span class="inline-block bg-gray-300 dark:bg-gray-600 text-gray-800 dark:text-gray-200 font-semibold rounded-full px-6 py-2">
+                <span class="inline-block bg-gray-300 text-gray-800 font-semibold rounded-full px-6 py-2">
                   <?= $title ?>
                 </span>
               </div>
@@ -184,12 +138,7 @@ $resultMinum = mysqli_query($conn, $queryMinum);
     </div>
   </div>
 
-<script>
-  // Dark mode toggle
-  document.getElementById('toggle-mode').addEventListener('change', function () {
-    document.documentElement.classList.toggle('dark-mode', this.checked);
-  });
-
+  <script>
   // Filter kategori
   document.getElementById('filter-kategori').addEventListener('change', function() {
     const kat = this.value;
@@ -302,7 +251,6 @@ $resultMinum = mysqli_query($conn, $queryMinum);
     });
   });
 </script>
-
 
 </body>
 </html>
