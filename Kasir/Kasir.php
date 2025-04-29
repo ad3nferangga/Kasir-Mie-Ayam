@@ -26,7 +26,7 @@ if (!$resultMie || !$resultBakso || !$resultMinum) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Menu dan Keranjang</title>
+  <title>Kasir - Menu dan Keranjang</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-orange-100 flex">
@@ -37,7 +37,7 @@ if (!$resultMie || !$resultBakso || !$resultMinum) {
     </div>
     <ul class="space-y-4 flex-1">
       <li><a class="flex items-center text-lg p-3 hover:bg-teal-600 rounded-lg" href="Kasir.php">Home</a></li>
-      <li><a class="flex items-center text-lg p-3 hover:bg-teal-600 rounded-lg" href="Konfirmasi.php">pesanan</a></li>
+      <li><a class="flex items-center text-lg p-3 hover:bg-teal-600 rounded-lg" href="Konfirmasi.php">Pesanan</a></li>
     </ul>
     <a class="flex items-center text-lg p-3 bg-red-600 hover:bg-red-700 rounded-lg mt-auto" href="../index.php">Logout</a>
   </div>
@@ -51,7 +51,7 @@ if (!$resultMie || !$resultBakso || !$resultMinum) {
           <h2 class="text-lg font-semibold">🍜 Data Menu</h2>
         </div>
         <div class="bg-white p-4 rounded-b-lg">
-          <!-- Filter Kategori (opsional) -->
+          <!-- Filter Kategori -->
           <div class="mb-4">
             <select id="filter-kategori" class="border border-gray-300 p-2 rounded">
               <option value="all">Semua Kategori</option>
@@ -61,90 +61,41 @@ if (!$resultMie || !$resultBakso || !$resultMinum) {
             </select>
           </div>
 
-          <!-- Mie Ayam Section -->
-          <div id="mie-ayam-section" class="border border-gray-700 rounded-lg p-4 mb-6 menu-section mie-ayam">
-            <div class="text-center mb-4">
-              <div class="border border-gray-500 rounded-full px-6 py-2 inline-block text-gray-700 font-semibold bg-gray-200">
-                Mie Ayam
+          <!-- Sections -->
+          <?php function renderSection($id, $title, $result) { ?>
+            <div id="<?= $id ?>-section" class="border border-gray-700 rounded-lg p-4 mb-6 menu-section <?= $id ?>">
+              <div class="text-center mb-4">
+                <div class="border border-gray-500 rounded-full px-6 py-2 inline-block text-gray-700 font-semibold bg-gray-200">
+                  <?= $title ?>
+                </div>
               </div>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-              <?php while($row = mysqli_fetch_assoc($resultMie)) { ?>
-                <div class="border border-gray-500 rounded-lg shadow-md overflow-hidden menu-item"
-                     data-id="<?= $row['id']; ?>"
-                     data-nama="<?= htmlspecialchars($row['nama_produk']); ?>"
-                     data-harga="<?= $row['price']; ?>">
-                  <!-- Perbaiki path gambar -->
-                  <img src="../Admin/<?= htmlspecialchars($row['gambar']); ?>" class="w-full h-40 object-cover" alt="<?= htmlspecialchars($row['nama_produk']); ?>">
-                  <div class="p-4">
-                    <h3 class="text-green-600 font-semibold"><?= htmlspecialchars($row['nama_produk']); ?></h3>
-                    <p class="text-green-600">Rp<?= number_format($row['price'], 0, ',', '.'); ?>,-</p>
-                    <div class="flex space-x-2 mt-2">
-                      <button class="bg-blue-500 text-white px-4 py-2 rounded w-full tambah-keranjang">Tambah ke Keranjang</button>
+              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <?php while($row = mysqli_fetch_assoc($result)) { ?>
+                  <div class="border border-gray-500 rounded-lg shadow-md overflow-hidden menu-item"
+                       data-id="<?= $row['id']; ?>"
+                       data-nama="<?= htmlspecialchars($row['nama_produk']); ?>"
+                       data-harga="<?= $row['price']; ?>">
+                    <img src="../Admin/<?= htmlspecialchars($row['gambar']); ?>" class="w-full h-40 object-cover" alt="<?= htmlspecialchars($row['nama_produk']); ?>">
+                    <div class="p-4">
+                      <h3 class="text-green-600 font-semibold"><?= htmlspecialchars($row['nama_produk']); ?></h3>
+                      <p class="text-green-600">Rp<?= number_format($row['price'], 0, ',', '.'); ?>,-</p>
+                      <div class="flex space-x-2 mt-2">
+                        <button class="bg-blue-500 text-white px-4 py-2 rounded w-full tambah-keranjang">Tambah ke Keranjang</button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              <?php } ?>
-            </div>
-          </div>
-
-          <!-- Bakso Section -->
-          <div id="bakso-section" class="border border-gray-700 rounded-lg p-4 mb-6 menu-section bakso">
-            <div class="text-center mb-4">
-              <div class="border border-gray-500 rounded-full px-6 py-2 inline-block text-gray-700 font-semibold bg-gray-200">
-                Bakso
+                <?php } ?>
               </div>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-              <?php while($row = mysqli_fetch_assoc($resultBakso)) { ?>
-                <div class="border border-gray-500 rounded-lg shadow-md overflow-hidden menu-item"
-                     data-id="<?= $row['id']; ?>"
-                     data-nama="<?= htmlspecialchars($row['nama_produk']); ?>"
-                     data-harga="<?= $row['price']; ?>">
-                  <img src="../Admin/<?= htmlspecialchars($row['gambar']); ?>" class="w-full h-40 object-cover" alt="<?= htmlspecialchars($row['nama_produk']); ?>">
-                  <div class="p-4">
-                    <h3 class="text-green-600 font-semibold"><?= htmlspecialchars($row['nama_produk']); ?></h3>
-                    <p class="text-green-600">Rp<?= number_format($row['price'], 0, ',', '.'); ?>,-</p>
-                    <div class="flex space-x-2 mt-2">
-                      <button class="bg-blue-500 text-white px-4 py-2 rounded w-full tambah-keranjang">Tambah ke Keranjang</button>
-                    </div>
-                  </div>
-                </div>
-              <?php } ?>
-            </div>
-          </div>
-
-          <!-- Minuman Section -->
-          <div id="minuman-section" class="border border-gray-700 rounded-lg p-4 menu-section minuman">
-            <div class="text-center mb-4">
-              <div class="border border-gray-500 rounded-full px-6 py-2 inline-block text-gray-700 font-semibold bg-gray-200">
-                Minuman
-              </div>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-              <?php while($row = mysqli_fetch_assoc($resultMinum)) { ?>
-                <div class="border border-gray-500 rounded-lg shadow-md overflow-hidden menu-item"
-                     data-id="<?= $row['id']; ?>"
-                     data-nama="<?= htmlspecialchars($row['nama_produk']); ?>"
-                     data-harga="<?= $row['price']; ?>">
-                  <img src="../Admin/<?= htmlspecialchars($row['gambar']); ?>" class="w-full h-40 object-cover" alt="<?= htmlspecialchars($row['nama_produk']); ?>">
-                  <div class="p-4">
-                    <h3 class="text-green-600 font-semibold"><?= htmlspecialchars($row['nama_produk']); ?></h3>
-                    <p class="text-green-600">Rp<?= number_format($row['price'], 0, ',', '.'); ?>,-</p>
-                    <div class="flex space-x-2 mt-2">
-                      <button class="bg-blue-500 text-white px-4 py-2 rounded w-full tambah-keranjang">Tambah ke Keranjang</button>
-                    </div>
-                  </div>
-                </div>
-              <?php } ?>
-            </div>
-          </div>
-
-          <!-- Form Tambah Produk dihapus -->
+          <?php }
+          renderSection('mie-ayam', 'Mie Ayam', $resultMie);
+          renderSection('bakso', 'Bakso', $resultBakso);
+          renderSection('minuman', 'Minuman', $resultMinum);
+          ?>
         </div>
       </div>
 
-       <!-- Keranjang -->
+      <!-- Keranjang -->
       <div>
         <div class="bg-teal-700 text-white p-4 rounded-t-lg"><h2>🛒 Keranjang</h2></div>
         <div class="bg-white p-4 rounded-b-lg shadow-md">
@@ -157,7 +108,7 @@ if (!$resultMie || !$resultBakso || !$resultMinum) {
 
           <label class="block text-gray-700">Metode Pembayaran</label>
           <select id="metode-pembayaran" class="w-full p-2 border border-gray-300 rounded mb-4">
-            <option>- Metode Pembayaran -</option>
+            <option value="">- Metode Pembayaran -</option>
             <option>Qris</option>
             <option>Cash</option>
           </select>
@@ -279,29 +230,15 @@ if (!$resultMie || !$resultBakso || !$resultMinum) {
           keranjang = [];
           updateKeranjang();
           document.getElementById('atas-nama').value = '';
+          // Redirect ke halaman Konfirmasi agar data terbaru muncul
+          window.location.href = 'Konfirmasi.php';
         }
       })
-      .catch(console.error);
+      .catch(err => {
+        console.error(err);
+        alert('Gagal membuat pesanan. Coba lagi.');
+      });
   });
-
-  document.querySelectorAll('.delete-product').forEach(btn => {
-    btn.addEventListener('click', () => {
-      if (!confirm('Hapus produk?')) return;
-      const menu = btn.closest('.menu-item'),
-            id   = menu.dataset.id;
-      fetch('delete_product.php', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: 'id=' + encodeURIComponent(id)
-      })
-      .then(r => r.json())
-      .then(d => {
-        if (d.success) menu.remove();
-        else alert('Gagal: ' + d.message);
-      })
-      .catch(console.error);
-    });
-  });
-</script>
+  </script>
 </body>
 </html>
