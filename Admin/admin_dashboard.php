@@ -202,35 +202,34 @@ $resultMinum = mysqli_query($conn, $queryMinum);
     });
   });
 
-  document.getElementById('buat-pesanan').addEventListener('click', () => {
-    if (!keranjang.length) {
-      alert('Keranjang kosong!');
-      return;
-    }
-    const namaPemesan = document.getElementById('atas-nama').value.trim();
-    if (!namaPemesan) {
-      alert('Atas Nama wajib diisi!');
-      return;
-    }
-    const data = new FormData();
-    data.append('tanggal', document.getElementById('tanggal-pesanan').value);
-    data.append('nama_pemesan', namaPemesan);
-    data.append('metode', document.getElementById('metode-pembayaran').value);
-    data.append('order', document.getElementById('order').value);
-    data.append('keranjang', JSON.stringify(keranjang));
+ document.getElementById('buat-pesanan').addEventListener('click', () => {
+  if (!keranjang.length) {
+    alert('Keranjang kosong!');
+    return;
+  }
+  const namaPemesan = document.getElementById('atas-nama').value.trim();
+  if (!namaPemesan) {
+    alert('Atas Nama wajib diisi!');
+    return;
+  }
+  const data = new FormData();
+  data.append('tanggal', document.getElementById('tanggal-pesanan').value);
+  data.append('nama_pemesan', namaPemesan);
+  data.append('metode', document.getElementById('metode-pembayaran').value);
+  data.append('order', document.getElementById('order').value);
+  data.append('keranjang', JSON.stringify(keranjang));
 
-    fetch('simpan_pesanan.php', { method: 'POST', body: data })
-      .then(r => r.json())
-      .then(res => {
-        alert(res.message);
-        if (res.status === 'success') {
-          keranjang = [];
-          updateKeranjang();
-          document.getElementById('atas-nama').value = '';
-        }
-      })
-      .catch(console.error);
-  });
+  fetch('simpan_pesanan.php', { method: 'POST', body: data })
+    .then(r => r.json())
+    .then(res => {
+      alert(res.message);
+      if (res.status === 'success') {
+        window.location.href = 'Konfirmasi.php'; // Redirect setelah pesanan berhasil
+      }
+    })
+    .catch(console.error);
+});
+
 
   document.querySelectorAll('.delete-product').forEach(btn => {
     btn.addEventListener('click', () => {
