@@ -31,7 +31,7 @@ $resultMinum = mysqli_query($conn, $queryMinum);
       <li><a href="add_product.php"     class="block p-3 rounded hover:bg-teal-600">Add Product</a></li>
     </ul>
 
-    <a href="../Login.php"
+    <a href="../index.php"
        class="block mt-auto p-3 bg-red-600 rounded hover:bg-red-700 text-center font-semibold shadow-md">
       Logout
     </a>
