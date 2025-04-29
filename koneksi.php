@@ -2,7 +2,7 @@
 $host = "mysql.railway.internal"; // Sesuaikan dengan host database
 $user = "root"; // Sesuaikan dengan username database
 $password = "EmxQSDLjWbFJkHBzuiyfdUOAmjqzYOBd"; // Sesuaikan dengan password database
-$database = "kasir_mieayam"; // Nama database
+$database = "railway"; // Nama database
 
 // Membuat koneksi
 $conn = mysqli_connect($host, $user, $password, $database);
