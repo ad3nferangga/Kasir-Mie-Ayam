@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit();
         }
     }
-    echo "<script>alert('Login gagal! Username atau password salah.'); window.location='Login.php';</script>";
+    echo "<script>alert('Login gagal! Username atau password salah.'); window.location='index.php';</script>";
 }
 ?>
 
