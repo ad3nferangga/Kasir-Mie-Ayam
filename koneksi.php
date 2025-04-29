@@ -1,7 +1,7 @@
 <?php
-$host = "localhost"; // Sesuaikan dengan host database
+$host = "mysql.railway.internal"; // Sesuaikan dengan host database
 $user = "root"; // Sesuaikan dengan username database
-$password = ""; // Sesuaikan dengan password database
+$password = "EmxQSDLjWbFJkHBzuiyfdUOAmjqzYOBd"; // Sesuaikan dengan password database
 $database = "kasir_mieayam"; // Nama database
 
 // Membuat koneksi
