@@ -29,6 +29,7 @@ $resultMinum = mysqli_query($conn, $queryMinum);
       <li><a href="report.php"          class="block p-3 rounded hover:bg-teal-600">Report</a></li>
       <li><a href="akun.php"            class="block p-3 rounded hover:bg-teal-600">Tambah Akun</a></li>
       <li><a href="add_product.php"     class="block p-3 rounded hover:bg-teal-600">Add Product</a></li>
+      <li><a href="about.php" class="block p-3 rounded hover:bg-teal-600">About</a></li>
     </ul>
 
     <a href="../index.php"
