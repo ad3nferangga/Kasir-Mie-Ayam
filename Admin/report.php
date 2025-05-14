@@ -91,6 +91,7 @@ $salesDateJson  = json_encode($salesByDate);
       <li><a class="flex items-center text-lg p-3 hover:bg-teal-600 rounded-lg" href="report.php">Report</a></li>
       <li><a class="flex items-center text-lg p-3 hover:bg-teal-600 rounded-lg" href="akun.php">Tambah Akun</a></li>
       <li><a class="flex items-center text-lg p-3 hover:bg-teal-600 rounded-lg" href="add_product.php">Add Product</a></li>
+        <li><a href="about.php" class="block p-3 rounded hover:bg-teal-600">About</a></li>
     </ul>
     <a href="../index.php" class="block p-2 bg-red-600 hover:bg-red-700 rounded mt-auto">Logout</a>
   </div>
